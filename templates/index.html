@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Welcome to Vegan Wine Checker</h1>
+
+<!-- <button type="button"><a href="{{url_for('searchwines')}}">Search wines</a></button> -->
+<button type="button"><a href="{{url_for('addnew')}}">Add new wine</a></button>
+<button type="button"><a href="{{url_for('winelist')}}">See the wine list</a></button>
+
+{% endblock content %}

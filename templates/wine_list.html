@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<button type="button"><a href="{{url_for('index')}}">Return Home</a></button>
+<h1>The Wine List</h1>
+<table>
+    <thead>
+        <th>WineID</th>
+        <th>Name</th>
+        <th>Producer</th>
+        <th>Origin</th>
+        <th>Vegan</th>
+        <th>Update/Delete</th>
+    </thead>
+    <tbody>
+        {% for row in retrieveWines %}
+        <tr>
+            <td>{{loop.index}}</td>
+            <td>{{row.Name}}</td>
+            <td>{{row.Producer}}</td>
+            <td>{{row.Origin}}</td>
+            <td>{{row.Vegan}}</td>
+            <td><button type="button"><a href="{{url_for('update_wine', wine_id=row.WineID)}}">Update</a></button>
+                <button type="button"><a href="{{url_for('delete_wine', wine_id=row.WineID)}}"
+                        onclick="return confirm('Are you sure?')">Update</a></button>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+
+{% endblock content %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Add new wine to the wine list</h1>
+
+<form action="{{url_for('add_wine')" method="post">
+    <label for="name">Wine Name</label>
+    <input type="text" name="Name" id="name" required placeholder="Enter wine name">
+
+    <label for="producer">Producer</label>
+    <input type="text" name="Producer" id="producer" required placeholder="Enter producer of the wine">
+
+    <label for="origin">Origin Country</label>
+    <input type="text" name="Origin" id="origin" required placeholder="Enter origin country">
+
+    <label for="vegan"></label>
+    <input type="text" name="Vegan" id="vegan" placeholder="Is it vegan? Yes/No">
+
+    <input type="submit" value="Add wine">Add wine to the list</input>
+</form>
+
+{% endblock content %}

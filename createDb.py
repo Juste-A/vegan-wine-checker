@@ -5,10 +5,11 @@ cursor = conn.cursor() # method that iterrates through our db
 
 # create a table
 cursor.execute("""CREATE TABLE wine_list (
-    Name text,
-    Producer text,
-    Origin text,
-    Vegan text
+    WineID INTEGER PRIMARY KEY AUTOINCREMENT,
+    Name TEXT,
+    Producer TEXT,
+    Origin TEXT,
+    Vegan TEXT
 )""")
 
 with open('barnivore_new.csv', 'r') as fin:
