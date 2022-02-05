@@ -3,6 +3,10 @@
 {% block content %}
 <h1>Welcome to Vegan Wine Checker</h1>
 
+<form action="" method="POST">
+    <input type="search" placeholder="Search by name, producer or country of origin" name="search_input">
+    <input type="submit" formaction="{{ url_for('search_wines') }}" value="Search">
+</form>
 
 <button type="button"><a href="{{url_for('add_wine')}}">Add new wine</a></button>
 <button type="button"><a href="{{url_for('wine_list')}}">See the wine list</a></button>

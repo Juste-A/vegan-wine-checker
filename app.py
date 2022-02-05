@@ -1,3 +1,4 @@
+from turtle import title
 from flask import Flask, render_template, request, url_for, redirect, abort
 import sqlite3 as sql
 
@@ -67,6 +68,23 @@ def delete_wine(wine_id):
     cursor.execute("DELETE FROM wine_list WHERE WineID=?", (wine_id,))
     conn.commit()
     return redirect(url_for("wine_list"))
+
+@app.route('/search_wines', methods=['GET', 'POST'])
+def search_wines():
+    if request.method == 'POST':
+        search_value = request.form['search_input']
+        search = "%{}%".format(search_value)
+
+        conn = wines_db()
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM wine_list WHERE Name LIKE ? OR Producer LIKE ? OR Origin LIKE ?", (search, search, search))
+        results = cursor.fetchall()
+        if results is None:
+            abort(404)
+        return render_template('search_wines.html', title = 'Search results', searchWines = results)
+    else:
+        return redirect ('index')
+
 
 
 
