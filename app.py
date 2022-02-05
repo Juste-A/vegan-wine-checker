@@ -1,4 +1,4 @@
-from flask import Flask, render_template, flash, request, url_for, redirect, abort
+from flask import Flask, render_template, request, url_for, redirect, abort
 import sqlite3 as sql
 
 app = Flask(__name__)
@@ -37,12 +37,11 @@ def add_wine():
 
         cursor.execute("INSERT INTO wine_list (Name, Producer, Origin, Vegan) VALUES (?,?,?,?)", (name, producer, origin, vegan))
         conn.commit()
-        flash('Wine Added to the list')
         conn.close()
         return redirect(url_for('wine_list'))
     return render_template('add_wine.html', title = 'Add wine to the list')
 
-@app.route("/update_wine/<string:wine_id", methods=['POST', 'GET'])
+@app.route("/update_wine/<string:wine_id>", methods=['POST', 'GET'])
 def update_wine(wine_id):
     if request.method == 'POST':
         name = request.form['Name']
@@ -54,21 +53,19 @@ def update_wine(wine_id):
         cursor = conn.cursor()
         cursor.execute("UPDATE wine_list SET Name=?, Producer=?, Origin=?, Vegan=? WHERE WineID=?", (name, producer, origin, vegan, wine_id))
         conn.commit()
-        flash('Wine Updated')
         return redirect(url_for("wine_list"))
-    conn = wines_db
+    conn = wines_db()
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM wine_list WHERE WineID=?", (wine_id,))
     get_wines = cursor.fetchone()
     return render_template("update_wine.html", retrieveWines = get_wines)
 
-@app.route("/delete_wine/<string:wine_id", methods = ['GET'])
+@app.route("/delete_wine/<string:wine_id>", methods = ['GET'])
 def delete_wine(wine_id):
-    conn = wines_db
+    conn = wines_db()
     cursor = conn.cursor()
     cursor.execute("DELETE FROM wine_list WHERE WineID=?", (wine_id,))
     conn.commit()
-    flash('Wine Deleted')
     return redirect(url_for("wine_list"))
 
 
@@ -79,4 +76,4 @@ def delete_wine(wine_id):
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host= '127.0.0.1', port=5000)
+    app.run(debug=True, host= '127.0.0.1', port=5005)

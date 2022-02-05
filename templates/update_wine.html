@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<button type="button"><a href="{{url_for('index')}}">Return Home</a></button>
+
+<h1>Update wine</h1>
+<form method="post" action="{{url_for('update_wine', wine_id = retrieveWines.WineID)}}">
+    <label for="name">Wine name</label>
+    <input type="text" name="Name" id="name" required value="{{retrieveWines.Name}}">
+
+    <label for="producer">Producer</label>
+    <input type="text" name="Producer" id="producer" required value="{{retrieveWines.Producer}}">
+
+    <label for="origin">Origin Country</label>
+    <input type="text" name="Origin" id="origin" required value="{{retrieveWines.Origin}}">
+
+    <label for="vegan">Is it vegan? Yes/No</label>
+    <input type="text" name="Vegan" id="vegan" required value="{{retrieveWines.Vegan}}">
+
+    <input type="submit" value="Update wine">
+</form>
+
+
+{% endblock content %}

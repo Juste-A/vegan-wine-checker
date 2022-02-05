@@ -2,6 +2,7 @@
 
 {% block content %}
 <button type="button"><a href="{{url_for('index')}}">Return Home</a></button>
+
 <h1>The Wine List</h1>
 <table>
     <thead>
@@ -22,7 +23,7 @@
             <td>{{row.Vegan}}</td>
             <td><button type="button"><a href="{{url_for('update_wine', wine_id=row.WineID)}}">Update</a></button>
                 <button type="button"><a href="{{url_for('delete_wine', wine_id=row.WineID)}}"
-                        onclick="return confirm('Are you sure?')">Update</a></button>
+                        onclick="return confirm('Are you sure?')">Delete</a></button>
             </td>
         </tr>
         {% endfor %}
