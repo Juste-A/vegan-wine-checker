@@ -1,33 +1,36 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<button type="button"><a href="{{url_for('index')}}">Return Home</a></button>
+<button type="button" class="btn btn-success btn-rounded btn-lg" data-mdb-ripple-color="#ffffff"
+    data-mdb-ripple-color="#ffffff"><a href="{{url_for('index')}}">Return Home</a></button>
 
-<h1>Your search results</h1>
-<table>
+<h1 class='text-center mb-3'>Results that match your search</h1>
+<div class="table-responsive"></div>
+<table class="table table-hover table-bordered table-sm table-light width-860px">
     <thead>
-        <th>WineID</th>
-        <th>Name</th>
-        <th>Producer</th>
-        <th>Origin</th>
-        <th>Vegan</th>
-        <th>Update/Delete</th>
+        <th scope="col">WineID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Producer</th>
+        <th scope="col">Origin</th>
+        <th scope="col">Vegan</th>
+        <th scope="col"></th>
     </thead>
     <tbody>
         {% for row in searchWines %}
         <tr>
-            <td>{{loop.index}}</td>
+            <th scope="row">{{loop.index}}</td>
             <td>{{row.Name}}</td>
             <td>{{row.Producer}}</td>
             <td>{{row.Origin}}</td>
             <td>{{row.Vegan}}</td>
-            <td><button type="button"><a href="{{url_for('update_wine', wine_id=row.WineID)}}">Update</a></button>
-                <button type="button"><a href="{{url_for('delete_wine', wine_id=row.WineID)}}"
-                        onclick="return confirm('Are you sure?')">Delete</a></button>
-            </td>
+            <td><button type="button" class="btn btn-primary btn-sm"><a
+                        href="{{url_for('update_wine', wine_id=row.WineID)}}">Update</a></button></td>
+            <td><button type="button" class="btn btn-danger btn-sm"><a
+                        href="{{url_for('delete_wine', wine_id=row.WineID)}}"
+                        onclick="return confirm('Are you sure?')">Delete</a></button></td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
-
+</div>
 {% endblock content %}

@@ -79,8 +79,8 @@ def search_wines():
         cursor = conn.cursor()
         cursor.execute("SELECT * FROM wine_list WHERE Name LIKE ? OR Producer LIKE ? OR Origin LIKE ?", (search, search, search))
         results = cursor.fetchall()
-        if results is None:
-            abort(404)
+        if results == ():
+            print("Nothing found")
         return render_template('search_wines.html', title = 'Search results', searchWines = results)
     else:
         return redirect ('index')

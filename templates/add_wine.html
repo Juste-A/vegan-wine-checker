@@ -1,24 +1,37 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<button type="button"><a href="{{url_for('index')}}">Return Home</a></button>
+<button type="button" class="btn btn-success btn-rounded btn-lg" data-mdb-ripple-color="#ffffff"
+    data-mdb-ripple-color="#ffffff"> <a href="{{url_for('index')}}">Return Home</a></button>
 
-<h1>Add new wine to the wine list</h1>
+<div class='row'>
+    <div class='col-5 mx-auto'>
+        <h1>Add new wine to the wine list</h1>
 
-<form action="" method="post">
-    <label for="name">Wine Name</label>
-    <input type="text" name="Name" id="name" required placeholder="Enter wine name">
+        <form action="" method="post">
+            <div class='form-group'>
+                <label for="name">Wine Name</label>
+                <input type="text" name="Name" id="name" required class='form-control mt-1 mb-3'
+                    placeholder="Enter wine name">
+            </div>
+            <div class='form-group'>
+                <label for="producer">Producer</label>
+                <input type="text" name="Producer" id="producer" required class='form-control mt-1 mb-3'
+                    placeholder="Enter producer of the wine">
+            </div>
+            <div class='form-group'>
+                <label for="origin">Origin Country</label>
+                <input type="text" name="Origin" id="origin" required class='form-control mt-1 mb-3'
+                    placeholder="Enter origin country">
+            </div>
+            <div class='form-group'>
+                <label for="vegan">Is it vegan?</label>
+                <input type="text" name="Vegan" id="vegan" class='form-control mt-1 mb-3'
+                    placeholder="Answer Yes or No">
+            </div>
+            <input type="submit" value="Add wine" class="btn btn-primary mt-3"></input>
+        </form>
 
-    <label for="producer">Producer</label>
-    <input type="text" name="Producer" id="producer" required placeholder="Enter producer of the wine">
-
-    <label for="origin">Origin Country</label>
-    <input type="text" name="Origin" id="origin" required placeholder="Enter origin country">
-
-    <label for="vegan"></label>
-    <input type="text" name="Vegan" id="vegan" placeholder="Is it vegan? Yes/No">
-
-    <input type="submit" value="Add wine">Add wine to the list</input>
-</form>
-
+    </div>
+</div>
 {% endblock content %}

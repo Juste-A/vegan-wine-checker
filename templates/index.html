@@ -1,14 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Welcome to Vegan Wine Checker</h1>
+<div class="h-100 d-flex flex-column justify-content-center align-items-center">
+    <h1 class="p-5">Welcome to Vegan Wine Checker</h1>
+    <div class='row'>
+        <div class='mx-auto p-5'>
+            <form action="" method="POST">
+                <input type="search" class='form-control mt-1 mb-3'
+                    placeholder="Search by name, producer or country of origin" name="search_input">
+                <input type="submit" formaction="{{ url_for('search_wines') }}"
+                    class='form-control mt-1 mb-3 btn btn-primary btn-sm' value="Search">
+            </form>
 
-<form action="" method="POST">
-    <input type="search" placeholder="Search by name, producer or country of origin" name="search_input">
-    <input type="submit" formaction="{{ url_for('search_wines') }}" value="Search">
-</form>
-
-<button type="button"><a href="{{url_for('add_wine')}}">Add new wine</a></button>
-<button type="button"><a href="{{url_for('wine_list')}}">See the wine list</a></button>
-
+            <button type="button" class="btn btn-secondary"><a href="{{url_for('add_wine')}}">Add new
+                    wine</a></button>
+            <button type="button" class="btn btn-secondary"><a href="{{url_for('wine_list')}}">See the wine
+                    list</a></button>
+        </div>
+    </div>
+</div>
 {% endblock content %}
