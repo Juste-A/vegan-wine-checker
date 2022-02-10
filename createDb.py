@@ -1,5 +1,7 @@
 import csv, sqlite3
 
+print(csv.__version__)
+
 conn = sqlite3.connect('wines.db') # creates a database
 cursor = conn.cursor() # method that iterrates through our db
 

@@ -1,0 +1,11 @@
+sqlite==3.32.3
+pandas==1.4.0
+click==8.0.3
+Flask==2.0.2
+itsdangerous==2.0.1
+Jinja2==3.0.3
+MarkupSafe==2.0.1
+pip==22.0.3
+setuptools==60.2.0
+Werkzeug==2.0.2
+wheel==0.37.1

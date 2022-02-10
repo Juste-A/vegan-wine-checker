@@ -1,4 +1,3 @@
-from turtle import title
 from flask import Flask, render_template, request, url_for, redirect, abort
 import sqlite3 as sql
 
